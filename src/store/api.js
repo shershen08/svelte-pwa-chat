@@ -6,15 +6,11 @@ messages.subscribe(value => {
 	//console.log(value);
 }); 
 
-
-var wsUri = "ws://echo.websocket.org/";
-var output;
 let websocket
 
-
-function testWebSocket()
+function initWebSocket(url)
 {
-  websocket = new WebSocket(wsUri);
+  websocket = new WebSocket(url);
   websocket.onopen = function(evt) { onOpen(evt) };
   websocket.onclose = function(evt) { onClose(evt) };
   websocket.onmessage = function(evt) { onMessage(evt) };
@@ -37,7 +33,9 @@ export function onMessage({data})
   messages.update(old => {
     old.push({
         side: 'THEM', 
-        text: data
+        text: data,
+        time: new Date(),
+        username: ''
     })
     return old
   });
@@ -57,7 +55,8 @@ export function doSend(message)
   messages.update(old => {
     old.push({
         side: 'ME', 
-        text: message
+        text: message,
+        username: ''
     })
     return old
   });
@@ -68,8 +67,7 @@ export function writeToScreen(message)
   // console.log(message)
 }
 
-export default function init()
+export default function init(url)
 {
-  output = document.getElementById("output");
-  testWebSocket();
+  initWebSocket(url);
 }
