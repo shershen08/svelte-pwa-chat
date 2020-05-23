@@ -1,13 +1,14 @@
 <script>
-	import { onMount } from 'svelte';
-	 import MsgList from '../components/messages/MsgList.svelte'
-	// import Intro from './Intro.svelte'
-	 import MsgForm from '../components/messages/MsgForm.svelte'
+	import { onMount} from 'svelte';
+
+	import MsgList from '../components/messages/MsgList.svelte'
+	import MsgForm from '../components/messages/MsgForm.svelte'
 	import Header from '../components/Header.svelte'
+	import Notifications from '../components/Notifications.svelte'
 
 	import init from '../store/api.js'
 
-    const wsUri = 'ws://echo.websocket.org/';
+	const wsUri = process.env.wsUrl
     
     onMount( () => {
         loadWS()
@@ -23,6 +24,7 @@
 
 <section class="msger">
 	<Header></Header>
+	<Notifications></Notifications>
 	<main class="msger-chat">
 		<MsgList/>
 	</main>

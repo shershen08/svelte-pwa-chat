@@ -28,10 +28,9 @@ export const sendNotification = () => {
 export const readMsg = (text) => {
     var utterThis = new SpeechSynthesisUtterance(text);
     utterThis.voice = voice
-
 //    utterThis.pitch = pitch.value;
 //   utterThis.rate = rate.value;
 
- synth.speak(utterThis);
+    synth.speak(utterThis);
 }
 

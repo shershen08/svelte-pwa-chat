@@ -2,7 +2,6 @@
     import {doSend} from '../store/api.js'
     let username = ''
     const login = () => {
-        console.log(text)
         doSend(text)
         text = ''
     }

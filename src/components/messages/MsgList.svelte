@@ -1,10 +1,9 @@
 <script>
 import {messages} from '../../store/api.js'
+
+
 import Message from './Message.svelte'
 import {sendNotification, readMsg} from '../../services/browser.js'
-
-
-
 
 messages.subscribe(value => {
     const msg = value[value.length-1];
@@ -13,7 +12,6 @@ messages.subscribe(value => {
         sendNotification();
     }
 }); 
-
 
 </script>
 

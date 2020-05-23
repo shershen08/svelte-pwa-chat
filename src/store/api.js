@@ -1,9 +1,10 @@
 import { writable } from 'svelte/store';
+import {user} from './user.js'
 
-export const messages = writable([])
+export const messages = writable(JSON.parse(localStorage.getItem('chatHistory')))
 
 messages.subscribe(value => {
-	//console.log(value);
+  localStorage.setItem('chatHistory', JSON.stringify(value))
 }); 
 
 let websocket
@@ -19,13 +20,19 @@ function initWebSocket(url)
 
 function onOpen(evt)
 {
-  writeToScreen("CONNECTED");
-  doSend("WebSocket rocks");
+  user.update(state => {
+    wsConnected: true
+  })
+  DEBUGwriteToScreen("CONNECTED");
 }
 
 function onClose(evt)
 {
-  writeToScreen("DISCONNECTED");
+  user.update(state => {
+    wsConnected: false
+  })
+  
+  DEBUGwriteToScreen("DISCONNECTED");
 }
 
 export function onMessage({data})
@@ -45,7 +52,7 @@ export function onMessage({data})
 
 function onError(evt)
 {
-  writeToScreen('ERROR: ' + evt.data);
+  DEBUGwriteToScreen('ERROR: ' + evt.data);
 }
 
 export function doSend(message)
@@ -56,15 +63,16 @@ export function doSend(message)
     old.push({
         side: 'ME', 
         text: message,
-        username: ''
+        username: '',
+        time: new Date(),
     })
     return old
   });
 }
 
-export function writeToScreen(message)
+export function DEBUGwriteToScreen(message)
 {
-  // console.log(message)
+  console.log(message)
 }
 
 export default function init(url)

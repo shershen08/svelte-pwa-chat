@@ -3,8 +3,14 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
+import replace from '@rollup/plugin-replace';
 
 const production = !process.env.ROLLUP_WATCH;
+const wsUrl = process.env.WS_URL;
+
+if(!wsUrl) {
+	console.log('\n No WS url provided!')
+}
 
 export default {
 	input: 'src/main.js',
@@ -35,6 +41,15 @@ export default {
 			dedupe: ['svelte']
 		}),
 		commonjs(),
+
+		replace({
+			// deep object should be stringify
+			process: JSON.stringify({
+			  env: {
+				wsUrl,
+			  }
+			}),
+		}),
 
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated

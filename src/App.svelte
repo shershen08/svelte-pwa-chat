@@ -1,6 +1,7 @@
 <script>
 	import { Router, Link, Route } from "svelte-routing";
 
+	import Links from './components/Links.svelte'
 	import Login from './pages/Login.svelte'
 	import Chat from './pages/Chat.svelte'
 	import Settings from './pages/Settings.svelte'
@@ -9,12 +10,8 @@
 </script>
 
 <Router url="{url}">
-  <nav>
-    <Link to="chat">Chat</Link>
-    <Link to="">Login</Link>
-    <Link to="settings">Settings</Link>
-  </nav>
-  <div>
+  <Links></Links>
+  <div class="main">
     <Route path="" component="{Login}" />
     <Route path="settings" component="{Settings}" />
     <Route path="chat" component="{Chat}" />
@@ -23,10 +20,11 @@
 </Router>
 
 <style>
-	main {
+	:global(.main) {
 		text-align: center;
 		padding: 1em;
-		max-width: 240px;
+		width: 100%;
+    	height: 90vh;
 		margin: 0 auto;
 	}
 
