@@ -1,9 +1,16 @@
 <script>
-    import {doSend} from '../store/api.js'
+	import { navigate } from "svelte-routing";
+    import {user} from '../store/user.js'
+    
     let username = ''
+
     const login = () => {
-        doSend(text)
-        text = ''
+        user.update(() => ({
+            userName: username
+        }))
+        // username = ''
+        console.log(username)
+        navigate("/chat", { replace: true });
     }
 
 </script>

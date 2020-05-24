@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import {user} from './user.js'
+import {network} from './network.js'
 
 export const messages = writable(JSON.parse(localStorage.getItem('chatHistory')))
 
@@ -20,17 +20,20 @@ function initWebSocket(url)
 
 function onOpen(evt)
 {
-  user.update(state => {
+  network.update(state => ({
+    ...state,
     wsConnected: true
-  })
+  }))
+  
   DEBUGwriteToScreen("CONNECTED");
 }
 
 function onClose(evt)
 {
-  user.update(state => {
+  network.update(state => ({
+    ...state,
     wsConnected: false
-  })
+  }))
   
   DEBUGwriteToScreen("DISCONNECTED");
 }
