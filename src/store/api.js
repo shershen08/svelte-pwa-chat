@@ -49,8 +49,6 @@ export function onMessage({data})
     })
     return old
   });
-
-  //websocket.close();
 }
 
 function onError(evt)

@@ -5,7 +5,8 @@
   <nav>
     <Link to="">Login</Link>
     <Link to="settings">Settings</Link>
-	<Link to="chat">Chat</Link>
+	  <Link to="chat">Chat</Link>
+    <Link to="list">List</Link>
   </nav>
 
 <style>

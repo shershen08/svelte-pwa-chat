@@ -4,6 +4,7 @@
 	import Links from './components/Links.svelte'
 	import Login from './pages/Login.svelte'
 	import Chat from './pages/Chat.svelte'
+	import List from './pages/Users.svelte'
 	import Settings from './pages/Settings.svelte'
 
 	export let url = "";
@@ -15,6 +16,7 @@
     <Route path="" component="{Login}" />
     <Route path="settings" component="{Settings}" />
     <Route path="chat" component="{Chat}" />
+	<Route path="list" component="{List}" />
     <Route path="/"><Login /></Route>
   </div>
 </Router>
