@@ -6,7 +6,7 @@
 	import Header from '../components/Header.svelte'
 	import Notifications from '../components/Notifications.svelte'
 
-	import init from '../store/api.js'
+	import init from '../store/websocket.js'
 
 	const wsUri = process.env.wsUrl
     

@@ -1,5 +1,5 @@
 <script>
-    import {doSend} from '../../store/api.js'
+    import {doSend} from '../../store/websocket.js'
     import {network} from '../../store/network.js'
 
     let text = ''
