@@ -5,7 +5,8 @@
     "build": "rollup -c --environment WS_URL:\"wss://echo.websocket.org/\"",
     "dev:echo-global": "rollup -c -w --environment WS_URL:\"ws://echo.websocket.org/\"",
     "dev:local": "rollup -c -w --environment WS_URL:\"ws://localhost:8080/api/ws/\"",
-    "start": "sirv public"
+    "start": "sirv public",
+    "test": "cypress open"
   },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.10.1",
@@ -23,6 +24,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.10.2",
+    "cypress": "^4.8.0",
     "humanize-duration": "^3.23.0",
     "sirv-cli": "^0.4.4",
     "svelte-routing": "^1.4.2"
