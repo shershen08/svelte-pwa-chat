@@ -1,10 +1,23 @@
 import { writable } from 'svelte/store';
 import {network} from './network.js'
+import {settings} from '../settings.js'
+import {user} from './user.js'
 
-export const messages = writable(JSON.parse(localStorage.getItem('chatHistory')))
+const getJSON = () => {
+  let data = []
+  try {
+    data = JSON.parse(localStorage.getItem(settings.lsKey));
+  } catch {
+    //
+  }
+  return data
+}
+
+export const messages = writable(getJSON())
 
 messages.subscribe(value => {
-  localStorage.setItem('chatHistory', JSON.stringify(value))
+  if(!value) return;
+  localStorage.setItem(settings.lsKey, JSON.stringify(value))
 }); 
 
 let websocket
@@ -41,10 +54,13 @@ function onClose(evt)
 export function onMessage({data})
 {
   messages.update(old => {
+    if(!old) {
+      old = []
+    }
     old.push({
         side: 'THEM', 
         text: data,
-        time: new Date(),
+        //time: new Date(),
         username: ''
     })
     return old
@@ -61,11 +77,14 @@ export function doSend(message)
 
   websocket.send(message);
   messages.update(old => {
+    if(!old) {
+      old = []
+    }
     old.push({
         side: 'ME', 
         text: message,
-        username: '',
-        time: new Date(),
+        username: user.userName,
+        time: new Date().getTime(),
     })
     return old
   });

@@ -1,3 +1,4 @@
+import {settings} from '../settings.js'
 
 // init speech synth
 let synth = window.speechSynthesis;
@@ -16,10 +17,15 @@ export const sendNotification = () => {
       //body: 'Some HTML here',
       icon: 'https://community.hackages.io/static/media/logo_h_cube.6d1c5012.svg'
   }
-      var myNotification = new Notification(eventName, options);
+    
+    new Notification(eventName, options);
+    
+    // enable reading
+    if(settings.readMessages) {
+      readMsg(eventName)
+      readMsg(options.body)
+    }
 
-    readMsg(eventName)
-    readMsg(options.body)
 
   })
 }
