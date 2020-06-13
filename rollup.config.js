@@ -22,8 +22,9 @@ export default {
 	input: 'src/main.js',
 	output: {
 		sourcemap: true,
-		format: 'iife',
+		format: 'iife', // change to esm
 		name: 'app',
+		//dir: 'public/build',
 		file: 'public/build/bundle.js'
 	},
 	plugins: [
