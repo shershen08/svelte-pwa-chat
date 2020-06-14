@@ -8,6 +8,11 @@
 	import Settings from './pages/Settings.svelte'
 
 	export let url = "";
+	
+	// use localhost, not 127.0.0.1 or 0.0.0.0
+	 if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js');
+    }
 </script>
 
 <Router url="{url}">
