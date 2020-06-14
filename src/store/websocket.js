@@ -3,6 +3,11 @@ import {network} from './network.js'
 import {settings} from '../settings.js'
 import {user} from './user.js'
 
+const RECONNECT_TIMEOUT = 1000;
+let localUrl = '';
+let reconnectRetry;
+let websocket;
+
 const getJSON = () => {
   let data = []
   try {
@@ -20,8 +25,6 @@ messages.subscribe(value => {
   localStorage.setItem(settings.lsKey, JSON.stringify(value))
 }); 
 
-let websocket
-
 function initWebSocket(url)
 {
   websocket = new WebSocket(url);
@@ -37,6 +40,10 @@ function onOpen(evt)
     ...state,
     wsConnected: true
   }))
+
+  if(reconnectRetry) {
+    clearTimeout(reconnectRetry)
+  }
   
   DEBUGwriteToScreen("CONNECTED");
 }
@@ -47,6 +54,10 @@ function onClose(evt)
     ...state,
     wsConnected: false
   }))
+
+  reconnectRetry = setTimeout(function() {
+    initWebSocket(localUrl);
+  }, RECONNECT_TIMEOUT);
   
   DEBUGwriteToScreen("DISCONNECTED");
 }
@@ -97,5 +108,6 @@ export function DEBUGwriteToScreen(message)
 
 export default function init(url)
 {
+  localUrl = url;
   initWebSocket(url);
 }

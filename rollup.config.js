@@ -54,6 +54,7 @@ export default {
 			process: JSON.stringify({
 			  env: {
 				wsUrl,
+				production
 			  }
 			}),
 		}),

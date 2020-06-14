@@ -4,7 +4,7 @@
   "scripts": {
     "build": "rollup -c --environment WS_URL:\"wss://echo.websocket.org/\"",
     "dev:echo-global": "rollup -c -w --environment WS_URL:\"ws://echo.websocket.org/\"",
-    "dev:local": "rollup -c -w --environment WS_URL:\"ws://localhost:8080/api/ws/\"",
+    "dev:local": "rollup -c -w --environment WS_URL:\"ws://localhost:8080/api/ws\"",
     "start": "sirv public",
     "test": "cypress open"
   },

@@ -26,9 +26,16 @@
 
 <svelte:window on:offline={handleOffline}  on:online={handleOnline}/>
 
-<div class:offline={state === 'offline'}>
-    {msg}
-</div>
+
+{#if !$network.wsConnected}
+    <div class="offline">
+        Could not connect to server...
+    </div>
+{:else}
+    <div class:offline={state === 'offline'}>
+        {msg}
+    </div>
+{/if}
 <style>
     .offline {
         padding: 5px 10px;

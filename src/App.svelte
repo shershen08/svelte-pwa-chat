@@ -8,9 +8,9 @@
 	import Settings from './pages/Settings.svelte'
 
 	export let url = "";
-	
+
 	// use localhost, not 127.0.0.1 or 0.0.0.0
-	 if ('serviceWorker' in navigator) {
+	 if ('serviceWorker' in navigator && !process.env.production) {
       navigator.serviceWorker.register('/service-worker.js');
     }
 </script>
