@@ -8,7 +8,7 @@
 
 	import init from '../store/websocket.js'
 
-	const wsUri = process.env.wsUrl
+	const wsUri = `wss://${process.env.wsUrl}api/ws`
     
     onMount( () => {
         loadWS()

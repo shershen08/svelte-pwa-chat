@@ -2,9 +2,9 @@
   "name": "svelte-app",
   "version": "1.0.0",
   "scripts": {
-    "build": "rollup -c --environment WS_URL:\"wss://dfc41269b5cf.ngrok.io/api/ws\"",
-    "dev:echo-global": "rollup -c -w --environment WS_URL:\"ws://echo.websocket.org/\"",
-    "dev:local": "rollup -c -w --environment WS_URL:\"ws://localhost:8080/api/ws\"",
+    "build": "rollup -c --environment WS_URL:\"a3ac9b8a6754.ngrok.io\"",
+    "dev:echo-global": "rollup -c -w --environment WS_URL:\"echo.websocket.org/\"",
+    "dev:local": "rollup -c -w --environment WS_URL:\"localhost:8080\"",
     "start": "sirv public",
     "test": "cypress open"
   },
