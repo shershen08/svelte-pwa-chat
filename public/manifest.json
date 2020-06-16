@@ -1,8 +1,8 @@
 {
     "name": "Svelte chat PWA",
     "short_name": "SveltePWAChat",
-    "theme_color": "#5bd1d7",
-    "background_color": "#f6f5f5",
+    "theme_color": "#ff3e00",
+    "background_color": "#ff3e00",
     "display": "standalone",
     "Scope": "/",
     "start_url": "/index.html",

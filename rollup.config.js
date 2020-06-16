@@ -22,7 +22,7 @@ export default {
 	input: 'src/main.js',
 	output: {
 		sourcemap: true,
-		format: 'iife', // change to esm
+		format: 'iife', // es, esm
 		name: 'app',
 		//dir: 'public/build',
 		file: 'public/build/bundle.js'

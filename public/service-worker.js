@@ -1,6 +1,8 @@
 var cacheName = "sveltepwa-cache-" + Date.now();
 var filesToCache = [
   "/",
+  "/assets/favicon-32x32.png",
+  "/assets/ndroid-chrome-192x192.png",
   "/index.html",
   "/build/bundle.js",
   "/build/bundle.css",
