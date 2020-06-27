@@ -29,6 +29,7 @@
     "sirv-cli": "^0.4.4",
     "svelte-css-vars": "0.0.1",
     "svelte-icons": "^2.1.0",
-    "svelte-routing": "^1.4.2"
+    "svelte-routing": "^1.4.2",
+    "svelte-spa-router": "^2.2.0"
   }
 }

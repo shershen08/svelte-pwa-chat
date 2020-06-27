@@ -25,5 +25,4 @@
 
 }
 </script>
-
 <button on:click={getLocation}>Show my location</button><br/>

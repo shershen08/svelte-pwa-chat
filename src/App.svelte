@@ -1,5 +1,6 @@
 <script>
-	import { Router, Link, Route } from "svelte-routing";
+
+	import Router from 'svelte-spa-router'
 
 	import Links from './components/Links.svelte'
 	import Login from './pages/Login.svelte'
@@ -7,24 +8,25 @@
 	import List from './pages/Users.svelte'
 	import Settings from './pages/Settings.svelte'
 
-	export let url = "";
-
 	// use localhost, not 127.0.0.1 or 0.0.0.0
 	 if ('serviceWorker' in navigator && !process.env.production) {
       navigator.serviceWorker.register('/service-worker.js');
-    }
+	}
+	const routes = {
+		 '/': Login,
+		 '/settings': Settings,
+		 '/chat': Chat,
+		 '/list': List,
+		  '*': Login,
+	}
+
 </script>
 
-<Router url="{url}">
+
   <Links></Links>
   <div class="main">
-    <Route path="" component="{Login}" />
-    <Route path="settings" component="{Settings}" />
-    <Route path="chat" component="{Chat}" />
-	<Route path="list" component="{List}" />
-    <Route path="/"><Login /></Route>
+    <Router {routes}/>
   </div>
-</Router>
 
 <style>
 	:global(.main) {
